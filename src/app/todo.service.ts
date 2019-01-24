@@ -19,6 +19,11 @@ export class TodoService {
     return this.http.get(this.todosUrl);
   }
 
+  // ADD TODO TO SERVER
+  addTodo(todo) {
+    return this.http.post(this.todosUrl, todo, httpOptions);
+  }
+
   // TOGGLE COMPLETED ON SERVER
   toggleComplete(todo) {
     const putUrl = this.todosUrl + '/' + todo.id;

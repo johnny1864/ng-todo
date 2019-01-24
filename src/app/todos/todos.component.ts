@@ -21,4 +21,12 @@ export class TodosComponent implements OnInit {
     this.todos = this.todos.filter(t => t.id !== todo.id);
     this._todo.deleteTodo(todo).subscribe();
   }
+
+  addTodo(todo) {
+    console.log(todo);
+
+    this._todo.addTodo(todo).subscribe(todo => {
+      this.todos.unshift(todo);
+    });
+  }
 }
