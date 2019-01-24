@@ -9,11 +9,16 @@ import { TodoService } from '../todo.service';
 export class TodosComponent implements OnInit {
   todos: any = [];
 
-  constructor(private todo: TodoService) {}
+  constructor(private _todo: TodoService) {}
 
   async ngOnInit() {
-    await this.todo.todos.subscribe(results => {
+    await this._todo.todos.subscribe(results => {
       this.todos = results;
     });
+  }
+
+  deleteTodo(todo) {
+    this.todos = this.todos.filter(t => t.id !== todo.id);
+    this._todo.deleteTodo(todo).subscribe();
   }
 }

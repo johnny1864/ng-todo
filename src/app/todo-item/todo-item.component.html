@@ -1,1 +1,6 @@
-<h3>{{ todo.title }}</h3>
+<div [ngClass]="setClasses()">
+  <p>
+    <input (change)="onToggle(todo)" type="checkbox" /> {{ todo.title }}
+    <button (click)="delete(todo)" class="del">X</button>
+  </p>
+</div>
